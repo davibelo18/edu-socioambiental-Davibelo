@@ -1,0 +1,25 @@
+int time=0;
+void setup()
+  
+{
+  Serial.begin(9600);
+  pinMode(4,OUTPUT);
+}  
+void loop()	
+{
+   int  valorRecebido= analogRead(A0);
+  	if(valorRecebido >0){
+      while(time<= 5000){
+      digitalWrite(4,HIGH); //Logo após que o sensor e o buzzer ligarem o led acende e apaga ao decorrer do sensor
+      tone(2,1000);     // Sensor imite sinal de movimento para o buzzer que dispara enquanto o sensor receber movimento
+      delay(500); 
+      digitalWrite(4,LOW);
+      noTone(2);
+      delay(500);
+      time+ 1000;  //Logo após que o sensor nâo emitir mais sinal buzzer ainda ficara 5 segundos tocando
+    }
+	time=0;
+    }
+    
+}
+   
